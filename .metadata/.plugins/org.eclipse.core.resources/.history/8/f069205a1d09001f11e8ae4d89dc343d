@@ -1,0 +1,8 @@
+package com.department.feignClient;
+
+import org.springframework.cloud.openfeign.FeignClient;
+
+@FeignClient(url = "http://localhost:8080/employee")
+public interface ApiClient {
+
+}

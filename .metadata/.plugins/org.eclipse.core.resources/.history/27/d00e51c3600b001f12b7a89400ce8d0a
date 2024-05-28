@@ -1,0 +1,24 @@
+spring.application.name=Api-gateway
+
+server.port=9191
+eureka.instance.client.serverUrl.defaultZone=http://localhost:8761/eureka/
+
+
+management.endpoints.web.exposure.include=*
+
+
+# configuring routes
+
+#Department-service
+spring.cloud.gateway.routes[0].id=DEPARTMENT-MICROSERVICE
+spring.cloud.gateway.routes[0].uri=lb://DEPARTMENT-MICROSERVICE
+spring.cloud.gateway.routes[0].predicates[0]=Path=/department/**
+
+#Employee-service
+spring.cloud.gateway.routes[1].id=EMPLOYEE-MICROSERVICE
+spring.cloud.gateway.routes[1].uri=lb://EMPLOYEE-MICROSERVICE
+spring.cloud.gateway.routes[1].predicates[0]=Path=/employee/**
+
+
+#spring.cloud.gateway.discovery.locator.enabled=true
+#spring.cloud.gateway.discovery.locator.lower-case-service-id=true

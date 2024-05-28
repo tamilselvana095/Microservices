@@ -1,0 +1,20 @@
+package com.employee.feignClient;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+
+import com.employee.dto.DepartmentDto;
+
+@FeignClient(url = "DEPARTMENT-MICROSERVICE",value = "Department-microservice")
+public interface ApiClient {
+	
+	@GetMapping("department/get/{code}")
+	public DepartmentDto getByCode(@PathVariable(name = "code") Long code);
+		
+	@GetMapping("/hello")
+	public String getReq();
+
+}
